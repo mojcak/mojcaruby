@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8"><title>Hildine plošče</title>
+		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+		  	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+		  <%= csrf_meta_tags %>
+		
+	</head>
+	<body>
+		<a href="index.php"><img src="assets/logo.png" alt="logo" width="255" height="67" id="logo"></a>
+		<div style="float: right;"><a href="#"><img src="assets/slo_icon.gif" alt="slo jezik" id="slo" height="15px"/></a>
+		<a href="#"><img src="assets/english_icon.gif" alt="ang jezik" id="en" height="15px"/></a></div>
+			<div id="search">
+	 	<form onsubmit="return false;">
+	<a href="login.php" id="prijavaID" >Prijava</a>
+	<label><input type="text" id="searchLabel" name="Vnesi iskalni niz" placeholder="Vpiši iskane besede  " /></label>';
+	 <input type="image" src="assets/search.png" name="search" width="14" height="14" alt="search" id="searchButton" /></form></div>
+	    <div style="display: none;" id="kosaraDiv"></div>    
+			<nav>
+				<ul>
+					<li id="CD"><a href="showCD.php" id="aCD">CD plošče</a></li>
+					<li id="LP"><a href="showLP.php" id="aLP">LP plošče</a></li>
+		 			<li id="Vse"><a href="showCDLP.php" id="aVse">Vsi izdelki</a></li>
+		 			<li id="Narocila"><a href="Narocila.php" id="aNarocila">Naročila</a></li>
+	 				<li id="Kosarica"><a href="shoppingBasket.php" id="aKosarica">Košarica</a></li></ul>
+	 		</nav>
+	 		<img src="assets/logo2.png" alt="Menu" width="960" height="200" id="podlogo" class="img">
+	 	<section>
+
+	<%= yield %>
+
+		</section>
+		<footer>
+			<ul>
+				<li id="Kontakt"><a href="kontakt.php" id="aKontakt">Kontakt</a></li>
+				<li id="SplosniPogoji"><a href="splosnipogoji.php" id="aSplosniPogoji">Splošni pogoji</a></li>
+				<li id="Faq"><a href="faq.php" id="aFaq">FAQ</a></li>
+				<li id="Informacije"><a href="informacije.php" id="aInformacije">Informacije</a></li>
+			</ul>
+		</footer>
+	</body>	
+</html>
