@@ -1,3 +1,4 @@
+#encoding: utf-8
 require 'bcrypt'
 class UsersController < ApplicationController
 	def users

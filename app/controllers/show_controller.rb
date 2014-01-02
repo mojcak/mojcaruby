@@ -1,3 +1,4 @@
+#encoding: utf-8
 class ShowController < ApplicationController
 	def show
 		@id = params[:post_id].first.first

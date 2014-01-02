@@ -14,12 +14,13 @@ class CreateProducts < ActiveRecord::Migration
       t.integer :orderquantity
 
       t.timestamps
-  end
-  create_table :albuminfos do |t|
-    t.belongs_to :product
-    t.string :albumsongtitle
-      t.string :albumsongpath
+    end
+    create_table :albuminfos do |t|
+      t.belongs_to :product
+      t.string :albumsongtitle
+        t.string :albumsongpath
 
-      t.timestamps
+        t.timestamps
+    end
   end
 end

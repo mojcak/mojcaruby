@@ -1,4 +1,5 @@
- # logger.info __
+#encoding: utf-8
+# logger.info __
 class FirstController < ApplicationController
   def showproducts(type)
   	if (type == "A" || type == "ALL")
@@ -328,7 +329,7 @@ class FirstController < ApplicationController
 
   		a = '<h1>'
   		a << @id
-  		a <<': '
+  		a << ': '
   		a << @customersurname
   		a << ', '
   		a << @customername
@@ -493,5 +494,4 @@ end
 def addproduct
 	
 end
-
 

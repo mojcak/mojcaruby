@@ -1,0 +1,4 @@
+heroku login
+heroku config:add DATABASE_URL=mysql2://mk0450:komavec92@mysql.lrk.si:3306/mk0450_b2
+heroku config:add SHARED_DATABASE_URL=mysql2://mk0450:komavec92@mysql.lrk.si:3306/mk0450_b2
+

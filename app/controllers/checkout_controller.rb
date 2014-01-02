@@ -1,3 +1,4 @@
+﻿#encoding: utf-8
 class CheckoutController < ApplicationController
 	def checkout
 		if (session[:user_name]==nil)
@@ -83,59 +84,59 @@ class CheckoutController < ApplicationController
 			@city = params[:checkoutcity]
 
 			@i = 1
-			if (/^[A-Za-z ]{2,255}$/.match(@name)== nil)
+			if /^[A-Za-z ]{2,255}$/.match(@name)== nil
 				@i = @i*0
 				@name = ""
 			else
 				# match
 			end
 
-			if (/^[A-Za-z ]{2,255}$/.match(@surname)== nil)
+			if /^[A-Za-z ]{2,255}$/.match(@surname)== nil
 				@i = @i*0
 				@surname = ""
 			else
 				# match
 			end
 			
-			if (/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/.match(@email)== nil)
+			if /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/.match(@email)== nil
 				@i = @i*0
 				@email  = ""
 			else
 				# match
 			end
-			if (/^[A-Za-z ]{2,20}$/.match(@street)== nil)
+			if /^[A-Za-z ]{2,20}$/.match(@street)== nil
 				@i = @i*0
 				@street = ""
 			else
 				# match
 			end
-			if (/^[0-9]{1,9999}[a-zA-Z0-9 -]{0,3}$/.match(@num)== nil)
+			if /^[0-9]{1,9999}[a-zA-Z0-9 \-]{0,3}$/.match(@num)== nil
 				@i = @i*0
 				@num = ""
 			else
 				# match
 			end
-			if (/^[A-Za-z ]{2,20}$/.match(@city)== nil)
+			if /^[A-Za-z ]{2,20}$/.match(@city)== nil
 				@i = @i*0
 				@city = ""
 			else
 				# match
 			end
-			if (/^[1-9]{1}[0-9]{3}$/.match(@post)== nil)
+			if /^[1-9]{1}[0-9]{3}$/.match(@post)== nil
 				@i = @i*0
 				@post = ""
 			else
 				# match
 			end
 
-			if (@i == 0)
+			if @i == 0
 				session[:userinfo] = {"name" => @name, "surname" => @surname, "email" => @email, "street" => @street, "num" => @num, "city"=>@city, "post" => @post}
 				flash[:noticecheckout] = "Popravi podatke!"
 				redirect_to :back
 			else 
 				#
 				@username = session[:user_name]
-				if (Customer.exists?(customerusername: @username))
+				if Customer.exists?(customerusername: @username)
 					@customer = Customer.find_by customerusername: @username
 					@id = @customer.id
 					#params[:user] = {:customername => @name, :customersurname => @surname, :customeraddressstreet => @street, :customeraddressstreetnum => @num, :customeraddresscity => @city, :customerPostNumber => @post.to_i, :customeremail => @email}

@@ -1,3 +1,4 @@
+#encoding: utf-8
 class AdditemController < ApplicationController
 
  def additem
@@ -9,13 +10,13 @@ class AdditemController < ApplicationController
 		@type = params[:type]
 
 		@i = 1
-		if (/^[A-Za-z 0-9.?*!#$%&]{2,255}$/.match(@album)== nil)
+		if /^[A-Za-z 0-9.?*!#\$%&]{2,255}$/.match(@album)== nil
 			@i = @i*0
 			@album = ""
 		else
 			# match
 		end
-		if (/^[A-Za-z 0-9.*?!#$%&]{2,255}$/.match(@artist)== nil)
+		if (/^[A-Za-z 0-9.*?!#\$%&]{2,255}$/.match(@artist)== nil)
 			@i = @i*0
 			@artist = ""
 		else
