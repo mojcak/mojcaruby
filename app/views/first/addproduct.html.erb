@@ -1,0 +1,19 @@
+<% if flash[:noticeadditem] %>
+    <div class="notice" style="color:red;"><%= flash[:noticeadditem] %></div>
+<% end %>  
+<% if session[:user_name]!="admin" %>
+		
+<% else %>
+	<h1>Dodaj izdelke</h1>
+	<%= form_tag("/additem", method: "get") do %>
+	<%= label_tag(:q, "Naslov albuma:") %>
+  	<%= text_field_tag(:album) %><br />
+  	<%= label_tag(:a, "Ime izvajalca:") %>
+  	<%= text_field_tag(:artist) %><br />
+  	<%= label_tag("Cena izdelka v €:") %>
+  	<%= text_field_tag(:price) %><br />
+  	<%= label_tag("Tip izdelka (LP, CD):") %>
+  	<%= text_field_tag(:type) %><br />
+  	<%= submit_tag("Nadaljuj") %>
+	<% end %>
+<% end %>

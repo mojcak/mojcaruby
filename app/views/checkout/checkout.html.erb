@@ -1,0 +1,4 @@
+<% if flash[:noticecheckout] %>
+    <div class="notice" style="color:red;"><%= flash[:noticecheckout] %></div>
+<% end %>  
+<%= render inline: @checkout %>

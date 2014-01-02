@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8"><title>Hildine plošče</title>
+		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+		  	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+		  <%= csrf_meta_tags %>
+		
+	</head>
+	<body>
+		<%= link_to image_tag("/assets/logo.png"), 'index' %> 
+	<div id="search">
+	 	<%= form_tag("/search", method: "get") do %>
+
+	 		<% if session[:user_name] != nil
+	 				@s = "Pozdravljen, " 
+	 				@s << session[:user_name]
+	 				@s << "! "
+	 				@log = "Odjava"
+	 				@where = "logout"
+	 			else 
+		 			@log = "Prijava" 
+		 			@where = "users"
+		 		end
+		 	%>
+	 		<%= @s %><%= link_to @log, @where%>
+			
+  			<%= text_field_tag(:search) %>
+  			<%= image_submit_tag("/assets/search.png", :class => "searchB" ) %>
+			
+	<% end %>
+	</div>
+	    <div style="display: none;" id="kosaraDiv"></div>    
+			<nav>
+				<ul>
+					<li id="CD">
+						<%= link_to "CD plošče", 'CD' %>
+					</li>
+					<li id="LP">
+						<%= link_to "LP plošče", 'LP' %>
+					</li>
+		 			<li id="Vse">
+		 				<%= link_to "Vsi izdelki", 'all' %>
+		 			</li>
+		 			<li id="Narocila">
+		 				<%= link_to "Naročila", 'orders' %>
+		 			</li>
+		 			
+	 				<li id="Dodaj">
+	 					<%= link_to "Dodaj", 'addproduct' %>
+	 				</li></ul>
+	 		</nav>
+	 		<img src="/assets/logo2.png" alt="Menu" width="960" height="200" id="podlogo" class="img">
+	 	<section>
+
+	<%= yield %>
+
+		</section>
+		<footer>
+			<ul>
+				<li id="Kontakt">
+					<%= link_to "Kontakt", 'contact' %>
+				</li>
+				<li id="SplosniPogoji">
+					<%= link_to "Splošni pogoji", 'about' %>
+				</li>
+				<li id="Faq">
+					<%= link_to "FAQ", 'faq' %>
+				</li>
+				<li id="Informacije">
+					<%= link_to "Informacije", 'info' %>
+				</li>
+			</ul>
+		</footer>
+	</body>	
+</html>

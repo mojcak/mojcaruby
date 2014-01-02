@@ -8,24 +8,57 @@
 		
 	</head>
 	<body>
-		<a href="index.php"><img src="assets/logo.png" alt="logo" width="255" height="67" id="logo"></a>
-		<div style="float: right;"><a href="#"><img src="assets/slo_icon.gif" alt="slo jezik" id="slo" height="15px"/></a>
-		<a href="#"><img src="assets/english_icon.gif" alt="ang jezik" id="en" height="15px"/></a></div>
-			<div id="search">
-	 	<form onsubmit="return false;">
-	<a href="login.php" id="prijavaID" >Prijava</a>
-	<label><input type="text" id="searchLabel" name="Vnesi iskalni niz" placeholder="Vpiši iskane besede  " /></label>';
-	 <input type="image" src="assets/search.png" name="search" width="14" height="14" alt="search" id="searchButton" /></form></div>
+		<%= link_to image_tag("/assets/logo.png"), 'index' %> 
+	<div id="search">
+	 	<%= form_tag("/search", method: "get") do %>
+
+	 		<% if session[:user_name] != nil
+	 				@s = "Pozdravljen, " 
+	 				@s << session[:user_name]
+	 				@s << "! "
+	 				@log = "Odjava"
+	 				@where = "logout"
+	 			else 
+		 			@log = "Prijava" 
+		 			@where = "users"
+		 		end
+		 	%>
+	 		<%= @s %><%= link_to @log, @where%>
+			
+  			<%= text_field_tag(:search) %>
+  			<%= image_submit_tag("/assets/search.png", :class => "searchB" ) %>
+			
+	<% end %>
+	</div>
 	    <div style="display: none;" id="kosaraDiv"></div>    
 			<nav>
 				<ul>
-					<li id="CD"><a href="showCD.php" id="aCD">CD plošče</a></li>
-					<li id="LP"><a href="showLP.php" id="aLP">LP plošče</a></li>
-		 			<li id="Vse"><a href="showCDLP.php" id="aVse">Vsi izdelki</a></li>
-		 			<li id="Narocila"><a href="Narocila.php" id="aNarocila">Naročila</a></li>
-	 				<li id="Kosarica"><a href="shoppingBasket.php" id="aKosarica">Košarica</a></li></ul>
+					<li id="CD">
+						<%= link_to "CD plošče", 'CD' %>
+					</li>
+					<li id="LP">
+						<%= link_to "LP plošče", 'LP' %>
+					</li>
+		 			<li id="Vse">
+		 				<%= link_to "Vsi izdelki", 'all' %>
+		 			</li>
+		 			<li id="Narocila">
+		 				<%= link_to "Naročila", 'orders' %>
+		 			</li>
+		 			<% @s = "Košarica ("
+		 				@num = 0
+		 				if session[:cart] != nil
+			 				session[:cart].each do |k, v|
+			 					@num = @num + v.to_i
+			 				end
+						end
+		 				@s << @num.to_s
+		 				@s << ")"%>
+	 				<li id="Kosarica">
+	 					<%= link_to @s, 'cart' %>
+	 				</li></ul>
 	 		</nav>
-	 		<img src="assets/logo2.png" alt="Menu" width="960" height="200" id="podlogo" class="img">
+	 		<img src="/assets/logo2.png" alt="Menu" width="960" height="200" id="podlogo" class="img">
 	 	<section>
 
 	<%= yield %>
@@ -33,10 +66,18 @@
 		</section>
 		<footer>
 			<ul>
-				<li id="Kontakt"><a href="kontakt.php" id="aKontakt">Kontakt</a></li>
-				<li id="SplosniPogoji"><a href="splosnipogoji.php" id="aSplosniPogoji">Splošni pogoji</a></li>
-				<li id="Faq"><a href="faq.php" id="aFaq">FAQ</a></li>
-				<li id="Informacije"><a href="informacije.php" id="aInformacije">Informacije</a></li>
+				<li id="Kontakt">
+					<%= link_to "Kontakt", 'contact' %>
+				</li>
+				<li id="SplosniPogoji">
+					<%= link_to "Splošni pogoji", 'about' %>
+				</li>
+				<li id="Faq">
+					<%= link_to "FAQ", 'faq' %>
+				</li>
+				<li id="Informacije">
+					<%= link_to "Informacije", 'info' %>
+				</li>
 			</ul>
 		</footer>
 	</body>	

@@ -1,0 +1,15 @@
+<% if session[:user_name] == "admin"%>
+	<% if flash[:noticeitem] %>
+	    <div class="notice" style="color:green;"><%= flash[:noticeitem] %></div>
+	<% end %>
+	<%= form_tag('/addsong', method: "post") do %>
+  	<%= label_tag("Naslov pesmi:") %>
+	<%= text_field_tag(:songname) %><br />
+
+	<%= submit_tag("Dodaj") %>
+	<% end %>
+	<%= form_tag('/noaddsong', method: "post") do %>
+	<%= submit_tag("Ne želim več dodajati") %>
+
+	<% end %>
+<% end %>

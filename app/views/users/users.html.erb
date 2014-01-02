@@ -1,0 +1,26 @@
+<h1>Prijava</h1>
+<h2>Obstoječi uporabniki</h2>
+<% if flash[:noticeusers] %>
+    <div class="notice" style="color:red;"><%= flash[:noticeusers] %></div>
+  <% end %>
+<%= form_tag(controller: "users", action: "signin", method: "post") do %>
+  <%= label_tag(:q, "Uporabniško ime:") %>
+  <%= text_field_tag(:username) %><br />
+  <%= label_tag(:a, "Uporabniško geslo:") %>
+  <%= password_field_tag(:userpassword) %><br />
+  <%= submit_tag("Prijavi se") %>
+<% end %>
+<h2>Novi uporabniki</h2>
+<% if flash[:noticeusers2] %>
+    <div class="notice" style="color:red;"><%= flash[:noticeusers2] %></div>
+  <% end %>
+<%= form_tag(controller: "users", action: "signup", method: "post") do %>
+  <%= label_tag(:q, "Uporabniško ime:") %>
+  <%= text_field_tag(:usernamenew) %><br />
+  <%= label_tag(:a, "Uporabniško geslo:") %>
+  <%= password_field_tag(:userpasswordnew) %><br />
+  <%= label_tag(:a, "Ponovi geslo:") %>
+  <%= password_field_tag(:userpasswordnewdup) %><br />
+  <%= submit_tag("Prijavi se") %>
+<% end %>
+

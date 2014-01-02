@@ -1,0 +1,7 @@
+<% if session[:user_name] == "admin"%>
+	<p>Vstavi sliko albuma!</p>
+	<%= form_tag({action: :upload}, multipart: true) do %>
+	<%= file_field_tag 'picture' %><br />
+	<%= submit_tag("Naloži") %>
+	<% end %>
+<% end %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  productartist: MyString
+  productalbum: MyString
+  productprice: 1
+  productpathpicture: MyString
+  producttype: MyString
+
+two:
+  productartist: MyString
+  productalbum: MyString
+  productprice: 1
+  productpathpicture: MyString
+  producttype: MyString

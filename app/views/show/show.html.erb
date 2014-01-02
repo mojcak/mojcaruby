@@ -1,0 +1,4 @@
+<% if flash[:noticeshow] %>
+    <div class="notice" style="color:green;"><%= flash[:noticeshow] %></div>
+  <% end %>
+<%= render inline: @showalbum %>

@@ -1,0 +1,15 @@
+<h1>Kontakt </h1>
+<p style="color:green;"}><%= @contactmessageOK.inspect.to_s.gsub('"', '') %></p>
+<p style="color:red;"}><%= @contactmessage.inspect.to_s.gsub('"', '') %></p>
+<p>Kontaktirajte nas tako, da izpolnite spodnji obrazec.</p>
+<%= form_tag("/contact", method: "post") do %>
+  <%= label_tag(:q, "Vaše ime:") %>
+  <%= text_field_tag(:contactname) %><br />
+  <%= label_tag(:a, "Vaš e-mail naslov:") %>
+  <%= text_field_tag(:contactemail) %><br />
+  <%= label_tag("Vaše sporočilo:") %>
+  <%= text_area_tag(:message, "", size: "40x6") %><br />
+  <%= submit_tag("Pošlji") %>
+<% end %>
+
+
